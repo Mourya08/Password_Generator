@@ -1,0 +1,110 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e0ece3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h1 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.generator {
+    display: inline-block;
+    text-align: left;
+}
+
+#password {
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 1.2rem;
+}
+
+#copy {
+    padding: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.settings {
+    margin-bottom: 30px;
+}
+button.cp {
+    background-color: #18c1c1;
+    color: white;
+    border: none;
+    margin-left: 30px;
+    padding: 10px 120px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 10px;
+}
+button {
+    background-color: #1b1d1f;
+    color: white;
+    border: none;
+    margin-left: 30px;
+    padding: 10px 120px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 10px;
+}
+button.cp:hover {
+    background-color: #ebe533;
+}
+
+button:hover {
+    background-color: #29ea73;
+}
+input[type="checkbox"] {
+    display: none;
+}
+input[type="checkbox"] + label {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+    background: #ddd;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+input[type="checkbox"] + label::before {
+    content: "";
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    left: 4px;
+    top: 3px;
+    background: white;
+    border-radius: 50%;
+    transition: transform 0.3s, background 0.3s;
+}
+input[type="checkbox"]:checked + label {
+    background: #4caf50;
+}
+
+input[type="checkbox"]:checked + label::before {
+    transform: translateX(26px);
+    background: white;
+}
+.checkbox-label {
+    font-size: 16px;
+    margin-left: 10px;
+    vertical-align: middle;
+    cursor: pointer;
+    color: #333;
+}

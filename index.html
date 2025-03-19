@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Strength Checker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Password Strength Checker</h1>
+
+        <!-- User Password Input -->
+        <label for="user-password">Enter a Password:</label>
+        <input type="text" id="user-password" oninput="checkPasswordStrength(this.value)">
+
+        <!-- Strength Indicator -->
+        <div style="width: 100%; height: 8px; background: #ddd; border-radius: 4px; margin-top: 5px;">
+            <div id="strength-bar" style="height: 8px; width: 0%; background: red; border-radius: 4px;"></div>
+        </div>
+        <p id="strength-text">Strength: N/A</p>
+        <p><strong>To Generate a Strong Password</strong></p>
+        <button id="generate" onclick="redirectToPage()">Generate Password</button>
+    </div>
+
+    <script src="script.js"></script> <!-- Keeping your existing JS -->
+    <script>
+        function redirectToPage() {
+            window.location.href = "generate.html"; // Redirects to password generator page
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Password Generator</h1>
+        <div class="generator">
+            <input type="text" id="password" readonly>
+            <button id="copy" class='cp' onclick="copyPassword()">📋 Copy to Clipboard</button>
+
+            <!-- Strength Indicator -->
+            <div style="width: 100%; height: 8px; background: #ddd; border-radius: 4px; margin-top: 5px;">
+                <div id="strength-bar" style="height: 8px; width: 0%; background: red; border-radius: 4px;"></div>
+            </div>
+            <p id="strength-text">Strength: N/A</p>
+
+            <div class="settings"><br>
+                <label for="length">Password Length</label>
+                <input type="range" id="length" min="5" max="30" value="15" oninput="updateLengthLabel()">
+                <span id="length-label">15</span>
+            </div>
+
+            <div class="settings">
+                <input type="checkbox" id="lowercase" checked>
+                <label for="lowercase"></label>
+                <span class="checkbox-label">Lowercase (a-z)</span><br><br>
+
+                <input type="checkbox" id="uppercase">
+                <label for="uppercase"></label>
+                <span class="checkbox-label">Uppercase (A-Z)</span><br><br>
+
+                <input type="checkbox" id="numbers">
+                <label for="numbers"></label>
+                <span class="checkbox-label">Numbers (0-9)</span><br><br>
+
+                <input type="checkbox" id="symbols">
+                <label for="symbols"></label>
+                <span class="checkbox-label">Symbols (!-$^+)</span><br><br>
+
+                <input type="checkbox" id="exclude-duplicates">
+                <label for="exclude-duplicates"></label>
+                <span class="checkbox-label">Exclude Duplicates</span><br><br>
+
+                <input type="checkbox" id="spaces">
+                <label for="spaces"></label>
+                <span class="checkbox-label">Include Spaces</span><br>
+            </div>
+
+            <button id="generate" onclick="generatePassword()">Generate Password</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        function checkPasswordStrength(password) {
+            const strengthBar = document.getElementById("strength-bar");
+            const strengthText = document.getElementById("strength-text");
+
+            let strengthScore = 0;
+            if (/[a-z]/.test(password)) strengthScore++; // Lowercase
+            if (/[A-Z]/.test(password)) strengthScore++; // Uppercase
+            if (/[0-9]/.test(password)) strengthScore++; // Numbers
+            if (/[^a-zA-Z0-9]/.test(password)) strengthScore++; // Symbols
+            if (password.length >= 12) strengthScore++; // Length Bonus
+
+            if (strengthScore <= 2) {
+                strengthBar.style.width = "30%";
+                strengthBar.style.backgroundColor = "red";
+                strengthText.textContent = "Weak 🔴";
+            } else if (strengthScore === 3) {
+                strengthBar.style.width = "60%";
+                strengthBar.style.backgroundColor = "orange";
+                strengthText.textContent = "Medium 🟡";
+            } else {
+                strengthBar.style.width = "100%";
+                strengthBar.style.backgroundColor = "green";
+                strengthText.textContent = "Strong 🟢";
+            }
+        }
+
+        function redirectToPage() {
+            window.location.href = "generate.html"; // Redirects to password generator page
+        }
+    </script>
+</body>
+</html>
